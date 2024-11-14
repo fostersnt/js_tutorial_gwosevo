@@ -11,8 +11,9 @@
     <p id="inc"></p>
     <p id="dec"></p>
     <p id="person"></p>
+    <p id="demo"></p>
 
-
+    <h2>Whispers of Twilight</h2>
     <script>
         // // var sum = 150 + 12; 
         // // var quotient = 66/33; 
@@ -82,13 +83,43 @@
         // //Order precedence 
         // document.getElementById("demo").innerHTML = (100 + 24)*80;
 
-        var age = 16; //Number 
-        var lastName = "Johnson"; //String
-        var cars = ["Acura", "Volvo", "BMW"]; //Array 
-        var person = {firstname:"Abbey", lastname:"Smith",age:24,eyecolor:"brown"} //Object 
+        // // Javascript Data Types 
+        // // (Number, Strings, Arrays, Objects )
+        // var age = 16; //Number 
+        // var lastName = "Johnson"; //String
+        // var cars = ["Acura", "Volvo", "BMW"]; //Array 
+        // var person = {firstname:"Abbey", lastname:"Smith",age:24,eyecolor:"brown"} //Object 
    
-        document.getElementById("person").innerHTML = person.age;
+        // document.getElementById("person").innerHTML = person.age;
+   
+        // Working Objects 
+        // var car = {type:"Accra", model:"Integra", color:"White"}; 
+        // document.getElementById("mycar").innerHTML = car.color;
+
+        // //Outputting multiple Object property values 
+
+        // var person = {name:"Abbey", hair:"dark brown", eyes:"deep-set", facialFeacture:"high cheekbones, a straight nose, and a defined jawline"};
+
+        // document.getElementById("person").innerHTML = 
+        // person.name + " has " + person.hair + " hair, " + person.eyes + " eyes and " + person.facialFeacture;
+
+
+
+        // Working with strings
+
+        var line1 = "In quiet moments, shadows dance," ;
+        var line2 = "A fleeting spark, a fleeting chance.";
+        var line3 ="Beneath the stars, the world stands still,";
+        var line4 ="A whispered dream, a silent thrill.";
+
+        var line5 = "Each breath, a step, a page anew,";
+        var line6 ="In twilight’s glow, life’s gentle hue.";
+        var line7 ="Through night’s embrace and morning’s song,";
+        var line8 ="We find the place where we belong.";
+   
+        document.getElementById("demo").innerHTML = line1 +"<br>"+ line2 +"<br>"+ line3 +"<br>"+ line4 +"<br>"+ line5 +"<br>"+ line6 +"<br>"+ line7 +"<br>"+ line8;
    </script>
+
     
 </body>
 </html>
