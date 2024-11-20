@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 1</title>
+</head>
+
+<body>
+    
+  <div onmouseover="document.bgColor= '#33f554'"> <!-- This div changes the background when the mouse passes on it  -->
+        <h1>Welcome to My Page</h1>
+
+        <p id="demo">This is a simple paragraph.</p>
+        <button id="myBtn"> Change Text</button>
+
+        <ul id="fruitlist">
+            <li>Mango</li>
+            <li>Pineapple</li>
+            <li>Orange</li>
+        </ul>
+
+        <!-- ADDITIONAL TASK:
+        Add an input box and another button labeled "Add Item".
+        When a user enters a fruit name in the input box and clicks "Add Item," the new fruit should be added to the list. -->
+
+        <!-- <label for="fruit">Enter New Fruit Name:</label> -->
+        New Fruit: <input type="text" id="fruit">
+        <!-- <input type="submit" id="addFruit" value="Add Item"> -->
+        <button id="addFruit">Add Item</button>
+
+        <script>
+            //Change the text of the header eh
+            document.querySelector("h1").innerHTML = "Hello, World";
+            
+            // Change the paragraph text and add a new list item when the button is clicked
+            document.getElementById("myBtn").onclick = function ChangeMe(){
+                document.querySelector("p").innerHTML = "This text has been changed!";
+
+                const fruitlist= document.getElementById("fruitlist");
+                const newlistItem = document.createElement("li");
+                newlistItem.textContent = "New Fruit";
+                fruitlist.appendChild(newlistItem);
+            };
+            
+            document.getElementById("addFruit").onclick = function addFruitfn(){
+                const fruitlist= document.getElementById("fruitlist");
+                const newlistItem = document.createElement("li");
+                const NewFruit = document.getElementById("fruit").value;
+                newlistItem.textContent = NewFruit;
+                fruitlist.appendChild(newlistItem);
+
+            };
+        </script>
+
+    </div>
+</body>
+</html>
