@@ -1,3 +1,28 @@
 
 WARNING:
 Our lessons will be canceled if you fail to keep to instructions. You were told to re-organize the assignment 1 files but you haven't done that. This should not be repeated.
+
+DOM MANIPULATION ASSIGNMENT 2
+
+Tasks:
+
+1.  Change Page Content
+    Create a basic HTML page with a heading and a paragraph.
+    Use JavaScript to change the text content of the heading and paragraph when the page loads.
+
+2.  Modify Element Style
+    Create a button and a div element.
+    Use JavaScript to change the background color of the div when the button is clicked.
+    NOTE: "The background should change to a color different from the previous color. Again, a user should be able to change the background color 10 times. Each click must come with a new background color"
+
+3.  Create and Append a New Element
+    Create an empty unordered list (<ul>) and a button.
+    When the button is clicked, a new list item (<li>) with the text "New Item" should be added to the list.
+
+4.  Toggle Class for Style Changes
+    Create a button and a paragraph.
+    Use JavaScript to toggle a CSS class on the paragraph when the button is clicked. The class should change the text color of the paragraph.
+    Hide/Show Elements
+
+5.  Create a button and a div element.
+    When the button is clicked, toggle the visibility of the div (i.e., "hide it if visible, show it if hidden").
