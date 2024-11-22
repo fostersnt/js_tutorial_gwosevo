@@ -12,7 +12,7 @@ document.getElementById("para").innerHTML = "I am very grateful";
     document.getElementById('changeColorButton').addEventListener('click', function() {
         currentColorIndex < colors.length - 1
             currentColorIndex++;
-            document.getElementById('bgbody').style.backgroundColor = colors[currentColorIndex];
+            document.getElementById('bgdiv').style.backgroundColor = colors[currentColorIndex];
         } 
     );
 
@@ -33,9 +33,9 @@ document.getElementById("para").innerHTML = "I am very grateful";
     
     //Onclick of the button Hide/Show the paragraph
     document.getElementById("show").onclick = function(){
-        if (document.querySelector(".Togg").style.display === 'block') {
-        document.querySelector(".Togg").style.display  = 'none';
+        if (document.querySelector(".Show-Hide").style.display === 'block') {
+        document.querySelector(".Show-Hide").style.display  = 'none';
     } else {
-        document.querySelector(".Togg").style.display = 'block';
+        document.querySelector(".Show-Hide").style.display = 'block';
     };
 }
