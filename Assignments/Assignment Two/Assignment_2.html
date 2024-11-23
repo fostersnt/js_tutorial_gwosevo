@@ -3,9 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Assignment 2 </title>
-</head>
-<body>
+    <title>Change Background Color</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .highlight {
+            color: red; 
+        }
+        #toggleText {
+            display: none; 
+        }
+    </style>
     
+</head>
+<body id="bgchg">
+    <h1>Second Assignment</h1>
+    <p>Change the background color</p>
+    <button id="changeColorButton">Change Color</button>
+    <div id="colorBox"></div>
+    <button id="addItemButton">Add Item</button>
+    <ul id="itemList"></ul>
+    <button>new button</button>
+    
+    
+    <p id="toggleText">This text can be hidden or shown.</p>
+    <button id="toggleVisibilityButton">Show/Hide Text</button>
+
+
+    <script>
+        const colors = ["red", "blue", "green", "yellow", "orange", "purple", "pink", "cyan", "magenta", "lime"];
+        let currentColorIndex = -1; 
+
+        document.getElementById('changeColorButton').addEventListener('click', function() {
+            if (currentColorIndex < colors.length - 1) {
+                currentColorIndex++;
+                document.getElementById('bgchg').style.backgroundColor = colors[currentColorIndex];
+            } 
+         document.getElementById('addItemButton').addEventListener('click', function() {
+            
+            const newItem = document.createElement('li');
+            newItem.textContent = 'New Item'; 
+
+            document.getElementById('itemList').appendChild(newItem);
+            
+        });    
+        });
+    </script>
+     </script>
+
+     
+     <button id="toggleColorButton">Toggle Color</button>
+     <p id="textParagraph">This is a paragraph. Click the button to change my color</p>
+ 
+     <script>
+         
+         document.getElementById('toggleColorButton').addEventListener('click', function() {
+             const paragraph = document.getElementById('textParagraph');
+             paragraph.classList.toggle('highlight'); 
+         });
+     </script>
+ 
+    
+     <div id="toggleDiv">This is toggleable . Click the button to hide or show me</div>
+ 
+     <script>
+        
+         document.getElementById('toggleVisibilityButton').addEventListener('click', function() {
+             const toggleDiv = document.getElementById('toggleDiv');
+             if (toggleDiv.style.display === 'none' || toggleDiv.style.display === '') {
+                 toggleDiv.style.display = 'block'; 
+             } else {
+                 toggleDiv.style.display = 'none'; 
+             }
+         });
+     </script>
 </body>
 </html>
+

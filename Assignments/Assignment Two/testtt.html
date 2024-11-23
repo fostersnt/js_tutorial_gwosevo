@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toggle Text Color and Hide/Show</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .highlight {
+            color: red; /* Change text color to red */
+        }
+        #toggleText {
+            display: none; /* Initially hidden */
+        }
+    </style>
+</head>
+<body>
+    <p id="textParagraph">This is a paragraph. Click the button to change my color!</p>
+    <button id="toggleColorButton">Toggle Color</button>
+    
+    <p id="toggleText">This text can be hidden or shown.</p>
+    <button id="toggleVisibilityButton">Show/Hide Text</button>
+
+    <script>
+        // Toggle the text color of the paragraph
+        document.getElementById('toggleColorButton').addEventListener('click', function() {
+            const paragraph = document.getElementById('textParagraph');
+            paragraph.classList.toggle('highlight'); // Toggle the 'highlight' class
+        });
+
+        // Show or hide the additional paragraph
+        document.getElementById('toggleVisibilityButton').addEventListener('click', function() {
+            const toggleText = document.getElementById('toggleText');
+            if (toggleText.style.display === 'none' || toggleText.style.display === '') {
+                toggleText.style.display = 'block'; // Show the text
+            } else {
+                toggleText.style.display = 'none'; // Hide the text
+            }
+        });
+    </script>
+</body>
+</html>
