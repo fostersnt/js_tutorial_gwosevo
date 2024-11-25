@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <style>
+        form {
+            background-color: #fff; 
+            border: 1px solid #ccc;
+            border-radius: 8px; 
+            padding: 20px; 
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+            margin-bottom: 20px; 
+            max-width: 600px;
+            align: center
+        }
+
+        label {
+            display: block; 
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        textarea {
+            width: 30%; 
+            padding: 10px; 
+            border: 1px solid #ccc; 
+            border-radius: 4px; 
+            margin-bottom: 15px; 
+            box-sizing: border-box; 
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 5px; 
+        }
+
+        button {
+            background-color: #007bff; 
+            color: white;
+            border: none;
+            border-radius: 4px; 
+            padding: 10px 15px; 
+            cursor: pointer; 
+            margin-right: 10px; 
+            transition: background-color 0.3s; 
+        }
+
+        button:disabled {
+            background-color: #ccc; 
+            cursor: not-allowed; 
+        }
+
+        button:hover:not(:disabled) {
+            background-color: #0056b3; 
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        .form-group {
+            margin-bottom: 15px; 
+        }
+
+        .error {
+            color: red;
+            font-size: 0.9em;
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 600px) {
+            form {
+                padding: 15px; 
+            }
+
+            button {
+                width: 100%; 
+                margin-bottom: 10px; 
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <form id="userform">
+        <label for="fname">First name:</label><br>
+        <input type="text" id="fname" name="fname" required>
+        <div id="nameError" class="error"></div>
+
+        <label for="lname">Last name:</label><br>
+        <input type="text" id="lname" name="lname" required><br>
+
+        <label for="mail">E-mail:</label><br>
+        <input type="email" id="mail" name="mail" required>
+        <div id="emailError" class="error"></div>
+
+        <label for="age">Age:</label><br>
+        <input type="number" id="age" name="age" required><br>
+
+        <label for="gender">Gender:</label><br>
+        <input type="radio" id="male" name="gen" value="Male">
+        <label for="male">Male</label><br>
+        <input type="radio" id="female" name="gen" value="Female">
+        <label for="female">Female</label><br>
+        <input type="radio" id="other" name="gen" value="Other">
+        <label for="other">Other</label>
+
+        <label for="hob">Hobby</label><br>
+        <input type="checkbox" id="read" name="hob" value="Reading">
+        <label for="read">Reading</label><br>
+        <input type="checkbox" id="sport" name="hob" value="Sports">
+        <label for="sport">Sports</label><br>
+        <input type="checkbox" id="music" name="hob" value="Music">
+        <label for="music">Music</label>
+    </form>
+
+    <div class="form-group">
+        <label for="comments">Comments:</label><br>
+        <textarea id="comments" name="comments" rows="4"></textarea>
+    </div>
+
+    <button type="button" id="submitButton" disabled>Submit</button>
+    <button type="reset" id="resetButton">Reset</button>
+
+    <div class="form-group" id="liveFeedback"></div>
+    <div id="confirmation" class="feedback"></div>
+
+    <script>
+        const form = document.getElementById('userform');
+        const nameInput = document.getElementById('fname');
+        const emailInput = document.getElementById('mail'); 
+        const submitButton = document.getElementById('submitButton');
+        const confirmation = document.getElementById('confirmation');
+        const liveFeedback = document.getElementById('liveFeedback');
+
+       
+        nameInput.addEventListener('input', validateName);
+        emailInput.addEventListener('input', validateEmail);
+
+        function validateName() {
+            const nameError = document.getElementById('nameError');
+            if (nameInput.value.length < 3) {
+                nameError.textContent = 'Name must be at least 3 characters long.';
+                submitButton.disabled = true;
+            } else {
+                nameError.textContent = '';
+                validateForm();
+            }
+            updateLiveFeedback();
+        }
+
+        function validateEmail() {
+            const emailError = document.getElementById('emailError');
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(emailInput.value)) {
+                emailError.textContent = 'Please enter a valid email address.';
+                submitButton.disabled = true;
+            } else {
+                emailError.textContent = '';
+                validateForm();
+            }
+            updateLiveFeedback();
+        }
+
+        function validateForm() {
+            if (nameInput.value.length >= 3 && emailInput.value) {
+                submitButton.disabled = false;
+            } else {
+                submitButton.disabled = true;
+            }
+        }
+
+        function updateLiveFeedback() {
+            liveFeedback.textContent = `Hello, ${nameInput.value || 'Guest'}!`;
+        }
+
+        
+        submitButton.addEventListener('click', function() {
+            if (nameInput.value.length >= 3 && emailInput.value) {
+                confirmation.textContent = `Thank you, ${nameInput.value}! Your data has been submitted.`;
+                form.reset();
+                liveFeedback.textContent = '';
+                confirmation.textContent = '';
+                submitButton.disabled = true; 
+            }
+        });
+
+        
+        document.getElementById('resetButton').addEventListener('click', function() {
+            confirmation.textContent = '';
+            liveFeedback.textContent = '';
+            document.getElementById('nameError').textContent = '';
+            document.getElementById('emailError').textContent = '';
+            submitButton.disabled = true; 
+        });
+    </script>
+</body>
+</html>
