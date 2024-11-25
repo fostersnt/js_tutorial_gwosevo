@@ -1,0 +1,42 @@
+Assignment 3: Dynamic Form Handling with DOM Manipulation
+
+Requirements:
+HTML Form Creation:
+
+Create a form with the following fields:
+Name (text input)
+Email (email input)
+Age (number input)
+Gender (radio buttons: Male/Female/Other)
+Hobbies (checkboxes: Reading, Sports, Music)
+Comments (textarea)
+A "Submit" button
+Real-time Validation:
+
+Validate the Name and Email fields in real-time:
+Name must have at least 3 characters.
+Email must follow proper email format.
+If validation fails, display an error message below the respective field.
+Dynamic Feedback:
+
+Add a section below the form that shows live feedback of the form data as the user fills it out.
+Example: When the user types their name, display "Hello, [Name]" dynamically.
+Submission Behavior:
+
+When the "Submit" button is clicked:
+Validate all fields again.
+If all fields are valid, display a confirmation message (e.g., "Thank you, [Name]! Your data has been submitted.") below the form.
+
+Clear the form inputs after successful submission.
+
+Bonus Features:
+
+Add a "Reset" button to clear all fields and reset the live feedback section.
+
+Disable the "Submit" button until all required fields are valid.
+
+
+Deliverables:
+A single HTML file with separate JavaScript and CSS (if needed).
+
+All validation and interactivity must be done using DOM manipulation (no libraries like jQuery).
