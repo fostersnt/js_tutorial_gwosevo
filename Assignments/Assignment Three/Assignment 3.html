@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment Three</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f6f9f9;
+        }
+        .form-container {
+            margin: 100px auto 0;
+            padding: 40px 35px;
+            width: 90%;
+            background: #ccc;
+            max-width: 470px;
+            border-radius: 20px;
+            text-align: left;
+        }
+
+        input[type=text], input[type=number], input[type=email], textarea {
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            resize: vertical;
+            width: 100%;
+        }
+
+        label {
+            padding: 12px 12px 12px 0;
+            display: inline-block;
+        }
+
+        textarea {
+            height: 150px;
+            background-color: #f8f8f8;
+            font-size: 16px;
+            resize: none;
+        }
+
+        input[type=submit], input[type=reset] {
+            width: 45%;
+            background-color: #1160e9;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type=submit]:hover, input[type=reset]:hover {
+            background-color: #52e2e7;
+        }
+
+        .error {
+            color: red;
+            font-size: 0.9em;
+        }
+
+        #feedback {
+            margin: 20px auto;
+            max-width: 470px;
+            background: #fff;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        #confirmationMessage {
+            margin: 20px auto;
+            color: green;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <form action="#" method="post" id="dynamicForm">
+        <div class="form-container">
+            <label for="name">Enter name:</label>
+            <input type="text" id="name" placeholder="Enter name"><br>
+            <span class="error" id="nameError"></span><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" placeholder="Enter email"><br>
+            <span class="error" id="emailError"></span><br>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" placeholder="Enter age"><br>
+            <br>
+
+            <div class="gender">
+                <label for="gender">Gender</label><br>
+                <input type="radio" name="gender" id="Male" value="Male">Male
+                <input type="radio" name="gender" id="Female" value="Female">Female
+                <input type="radio" name="gender" id="Other" value="Other">Other
+            </div>
+
+            <label for="hobbies">Hobbies:</label><br>
+            <input type="checkbox" name="hobbies" id="Reading" value="Reading">
+            <label for="hobbies">Reading</label><br>
+            <input type="checkbox" name="hobbies" id="Sports" value="Sports">
+            <label for="hobbies">Sports</label><br>
+            <input type="checkbox" name="hobbies" id="Music" value="Music">
+            <label for="hobbies">Music</label><br>
+
+            <label for="comment">Comment:</label>
+            <textarea name="comment" id="comment" placeholder="Write your comment."></textarea><br>
+
+            <input type="submit" value="Submit" id="submit" disabled>
+            <input type="reset" value="Reset" id="reset">
+        </div>
+    </form>
+
+    <div id="feedback">
+        <p>Live Feedback:</p>
+        <p id="liveFeedback">Hello, Guest</p>
+    </div>
+
+    <div id="confirmationMessage"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const form = document.getElementById("dynamicForm");
+            const nameInput = document.getElementById("name");
+            const emailInput = document.getElementById("email");
+            const submit = document.getElementById("submit");
+            const reset = document.getElementById("reset");
+            const liveFeedback = document.getElementById("liveFeedback");
+            const nameError = document.getElementById("nameError");
+            const emailError = document.getElementById("emailError");
+            const confirmationMessage = document.getElementById("confirmationMessage");
+
+            const validateName = () => {
+                if (nameInput.value.trim() === "") {
+                    nameError.textContent = "Name cannot be empty.";
+                    return false;
+                } else if (nameInput.value.trim().length < 3) {
+                    nameError.textContent = "Name must have at least 3 characters.";
+                    return false;
+                } else {
+                    nameError.textContent = "";
+                    return true;
+                }
+            };
+
+            const validateEmail = () => {
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailPattern.test(emailInput.value)) {
+                    emailError.textContent = "Please enter a valid email.";
+                    return false;
+                } else {
+                    emailError.textContent = "";
+                    return true;
+                }
+            };
+
+            const validateForm = () => {
+                return validateName() && validateEmail();
+            };
+
+            const updateFeedback = () => {
+                const nameValue = nameInput.value.trim();
+                if (nameValue === "") {
+                    liveFeedback.textContent = "Hello, Guest";
+                } else {
+                    liveFeedback.textContent = `Hello, ${nameValue}!`;
+                }
+            };
+
+            nameInput.addEventListener("input", () => {
+                validateName();
+                updateFeedback();
+                submit.disabled = !validateForm();
+            });
+
+            emailInput.addEventListener("input", () => {
+                validateEmail();
+                submit.disabled = !validateForm();
+            });
+
+            form.addEventListener("submit", (e) => {
+                e.preventDefault();
+                if (validateForm()) {
+                    confirmationMessage.textContent = `Thank you, ${nameInput.value.trim()}! Your data has been submitted.`;
+                    form.reset();
+                    liveFeedback.textContent = "Hello, Guest";
+                    submit.disabled = true;
+                }
+            });
+
+            reset.addEventListener("click", () => {
+                liveFeedback.textContent = "Hello, Guest";
+                confirmationMessage.textContent = "";
+                nameError.textContent = "";
+                emailError.textContent = "";
+                submit.disabled = true;
+            });
+        });
+    </script>
+</body>
+</html>
