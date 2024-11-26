@@ -1,0 +1,27 @@
+ASSIGNMENT 4
+
+JavaScript Array Functions
+
+The following are JavaScript functions, create a .js file for each function. Ensure that each file contains a description (should be written as comment) of the function and an example implementation of that function. 
+
+1) .map()
+2) .filter()
+3) .reduce()
+4) .reduceRight()
+5) .find()
+6) .findIndex()
+7) .some()
+8) .every()
+9) .sort()
+10) .flat()
+11) .flatMap()
+12) .includes()
+13) .splice()
+14) .slice()
+15) .forEach()
+16) .reverse()
+17) .concat()
+18) .join()
+19) .copyWithin()
+20) .from()
+21) .keys()

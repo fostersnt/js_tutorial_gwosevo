@@ -1,0 +1,26 @@
+
+DOM MANIPULATION ASSIGNMENT 1
+
+
+Task:
+HTML STRUCTURE
+Create a simple HTML page with the following:
+
+A header (h1) with the text: "Welcome to My Page".
+A paragraph (p) with the text: "This is a simple paragraph."
+A button (button) with the text: "Change Text".
+An unordered list (ul) with three items (li) containing the names of your favorite fruits.
+JavaScript Tasks: Write JavaScript code to:
+
+Change the text of the header to "Hello, World!" when the page loads.
+Update the paragraph text to "This text has been changed!" when the button is clicked.
+Add a new list item (li) to the list when the button is clicked. The text of the new list item should be "New Fruit".
+Change the background color of the entire page to a light color (e.g., lightblue) when the mouse is moved over the page.
+
+
+ADDITIONAL TASK:
+Add an input box and another button labeled "Add Item".
+When a user enters a fruit name in the input box and clicks "Add Item," the new fruit should be added to the list.
+Deliverables:
+An HTML file.
+A separate JavaScript file (or inline script).
